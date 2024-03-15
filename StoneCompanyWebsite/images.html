@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MK Stone in Style</title>
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <!-- Normal style sheet used for layout and general formatting. -->
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- Hover style for nav bar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("a").hover(
+          function () {
+            $(this).css("background-color", "cadetblue");
+            $(this).css("color", "white");
+          },
+          function () {
+            $(this).css("background-color", "white");
+            $(this).css("color", "black");
+          }
+        );
+      });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href="index.html"
+          ><img src="images\logo.png" alt="MK Stone in Style" width="100%"
+        /></a>
+      </div>
+    </header>
+
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="stones.html"><strong>View Stones</strong></a>
+            </li>
+            <li>
+              <a href="images.html"><strong>Images</strong></a>
+            </li>
+            <li>
+              <a href="form.html"><strong>Get Quotes</strong></a>
+            </li>
+            <li>
+              <a href="cart.html"><strong>Order Stone Slabs</strong></a>
+            </li>
+            <li>
+              <a href="schedule-appointment.html"
+                ><strong>Schedule an Appointment</strong></a
+              >
+            </li>
+            <li>
+              <a href="visit-us.html"><strong>Visit Us</strong></a>
+            </li>
+            <li>
+              <a href="leave-feedback.html"><strong>Leave Feedback</strong></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <h1>Stone Works Gallery</h1>
+    <div class="gallery"></div>
+    <script>
+      $(document).ready(function () {
+        var apiKey = "97536ad1754d81fa8bf50cd79ca42d2a";
+        var query = "marble granite quartz stone kitchen ";
+
+        $.ajax({
+          url: "https://api.flickr.com/services/rest/",
+          data: {
+            method: "flickr.photos.search",
+            api_key: apiKey,
+            text: query,
+            format: "json",
+            nojsoncallback: 1,
+            per_page: 12,
+            extras: "url_n, url_o",
+          },
+          dataType: "json",
+          success: function (data) {
+            console.log(data);
+            $.each(data.photos.photo, function (i, photo) {
+              var imgUrl = photo.url_n || photo.url_o;
+              var title = photo.title;
+
+              var $img = $("<img>").attr({
+                src: imgUrl,
+                alt: title,
+              });
+              var $caption = $("<figcaption>").text(title);
+
+              var $figure = $("<figure>")
+                .append($img)
+                .append($caption)
+                .appendTo(".gallery");
+            });
+          },
+          error: function () {
+            console.log("Error: Unable to fetch data.");
+          },
+        });
+      });
+    </script>
+    <br />
+    <footer>
+      MK Stone in Style &#8226; Brooklyn, NY &#8226; Serving the tri-state area
+      &#8226; 917-217-4283
+    </footer>
+  </body>
+</html>

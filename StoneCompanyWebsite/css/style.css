@@ -1,0 +1,114 @@
+body {
+  padding-left: 185px;
+  padding-right: 185px;
+  margin-bottom: 30px;
+  background-color: #bcbebf;
+}
+
+header {
+  margin: 0;
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+form {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 460px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid teal;
+}
+h1 {
+  background: #dfe3e6 url("images/bullet.gif") no-repeat 7px center;
+  margin: 0;
+  padding: 3px 0 3px 25px;
+  border: solid teal 1px;
+  color: teal;
+}
+
+#adv-custom-caption {
+  margin-top: 0.25em;
+}
+
+.cycle-slideshow {
+  align-content: center;
+}
+.outOfStock {
+  color: red;
+}
+
+.out-of-stock-message {
+  color: red;
+  font-weight: bold;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 35px; /* adjust height as necessary */
+  /* background should be same as nav bar */
+  background-color: #f2f2f2;
+  padding: 10px; /* or margin: 10px; adjust as necessary */
+  text-align: center;
+}
+
+#map {
+  width: 80%;
+  height: 500px;
+}
+
+.gallery img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin: 10px;
+}
+
+@media print {
+  .gallery img {
+    margin: 0;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.gallery img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin: 10px;
+}
+
+#datepicker {
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  left: 50%;
+  right: 50%;
+}
+
+form span {
+  color: red;
+}
+
+#calculate:hover,
+#confirm-button:hover {
+  background-color: lime;
+  color: red;
+}
+p {
+  font-size: 16px;
+}
+.navbar-center {
+  text-align: center;
+}

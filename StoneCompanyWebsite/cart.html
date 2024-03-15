@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MK Stone in Style</title>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <!-- Normal style sheet used for layout and general formatting. -->
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- Hover style for nav bar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("a").hover(
+          function () {
+            $(this).css("background-color", "cadetblue");
+            $(this).css("color", "white");
+          },
+          function () {
+            $(this).css("background-color", "white");
+            $(this).css("color", "black");
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <!-- LOGO -->
+    <header>
+      <div>
+        <a href="index.html"
+          ><img src="images\logo.png" alt="MK Stone in Style" width="100%"
+        /></a>
+      </div>
+    </header>
+
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="stones.html"><strong>View Stones</strong></a>
+            </li>
+            <li>
+              <a href="images.html"><strong>Images</strong></a>
+            </li>
+            <li>
+              <a href="form.html"><strong>Get Quotes</strong></a>
+            </li>
+            <li>
+              <a href="cart.html"><strong>Order Stone Slabs</strong></a>
+            </li>
+            <li>
+              <a href="schedule-appointment.html"
+                ><strong>Schedule an Appointment</strong></a
+              >
+            </li>
+            <li>
+              <a href="visit-us.html"><strong>Visit Us</strong></a>
+            </li>
+            <li>
+              <a href="leave-feedback.html"><strong>Leave Feedback</strong></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="app">
+      <h1><b>Add Stone Slabs to Cart:</b></h1>
+      <product-list :products="products"></product-list>
+
+      <br />
+      <hr />
+      <br />
+
+      <input v-model="name" placeholder="Enter your name" />
+      <p>{{name}}, thank you for ordering with us!</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/vue.js"></script>
+    <br /><br />
+
+    <footer>
+      MK Stone in Style &#8226; Brooklyn, NY &#8226; Serving the tri-state area
+      &#8226; 917-217-4283
+    </footer>
+  </body>
+</html>

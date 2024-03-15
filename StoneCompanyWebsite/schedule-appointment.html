@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MK Stone in Style</title>
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+
+    <!-- Normal style sheet used for layout and general formatting. -->
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- Hover style for nav bar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("a").hover(
+          function () {
+            $(this).css("background-color", "cadetblue");
+            $(this).css("color", "white");
+          },
+          function () {
+            $(this).css("background-color", "white");
+            $(this).css("color", "black");
+          }
+        );
+      });
+    </script>
+
+    <!-- datepicker plugins and links -->
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.css"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
+    <script>
+      $(function () {
+        $.timepicker.setDefaults($.timepicker.regional[""]);
+        $("#datepicker").datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate: new Date(),
+          onSelect: function (dateText, inst) {
+            $("#timepicker").timepicker("option", "minTime", "9:00 AM");
+            $("#timepicker").timepicker("option", "maxTime", "5:00 PM");
+          },
+        });
+        $("#timepicker").timepicker({
+          timeFormat: "h:mm p",
+          interval: 30,
+          minTime: "9:00 AM",
+          maxTime: "5:00 PM",
+          defaultTime: "9:00 AM",
+        });
+
+        $("#confirm-button").click(function () {
+          var selectedDate = $("#datepicker").datepicker("getDate");
+          var selectedTime = $("#timepicker").val();
+          if (selectedDate != null && selectedTime != "") {
+            $("#confirmation-dialog").html(
+              "<p>Your appointment is scheduled for " +
+                selectedDate.toLocaleDateString() +
+                ".</p>"
+            );
+
+            $("#confirmation-dialog").dialog({
+              modal: true,
+              buttons: {
+                OK: function () {
+                  $(this).dialog("close");
+                },
+              },
+            });
+          }
+        });
+      });
+    </script>
+  </head>
+  <body style="margin-bottom: 30px">
+    <!-- LOGO -->
+    <header>
+      <div>
+        <a href="index.html"
+          ><img src="images\logo.png" alt="MK Stone in Style" width="100%"
+        /></a>
+      </div>
+    </header>
+
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="stones.html"><strong>View Stones</strong></a>
+            </li>
+            <li>
+              <a href="images.html"><strong>Images</strong></a>
+            </li>
+            <li>
+              <a href="form.html"><strong>Get Quotes</strong></a>
+            </li>
+            <li>
+              <a href="cart.html"><strong>Order Stone Slabs</strong></a>
+            </li>
+            <li>
+              <a href="schedule-appointment.html"
+                ><strong>Schedule an appointment</strong></a
+              >
+            </li>
+            <li>
+              <a href="visit-us.html"><strong>Visit Us</strong></a>
+            </li>
+            <li>
+              <a href="leave-feedback.html"><strong>Leave Feedback</strong></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End of nav bar -->
+
+    <div id="date">
+      <h1>Schedule an Appointment</h1>
+      <br /><br />
+
+      <div id="datepicker"></div>
+      <br />
+      <br />
+      <button id="confirm-button">Confirm</button>
+      <div id="confirmation-dialog" title="Confirmation"></div>
+    </div>
+
+    <br /><br />
+    <footer>
+      MK Stone in Style &#8226; Brooklyn, NY &#8226; Serving the tri-state area
+      &#8226; 917-217-4283
+    </footer>
+  </body>
+</html>
